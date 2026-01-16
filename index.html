@@ -3,102 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samuel Omole – Data Scientist</title>
+    <title>Samuel Omole - Data Scientist</title>
     <link rel="stylesheet" href="style.css" />
-
-    <!-- <style>
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-        max-width: 72ch;
-        margin: 60px auto;
-        padding: 0 20px;
-        line-height: 1.6;
-        color: #222;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        margin-top: 2.5rem;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 0.3rem;
-      }
-      a {
-        color: #0056d2;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .links a {
-        margin-right: 15px;
-      }
-
-      .project {
-        background: #f7f7f8;
-        border: 1px solid #e7e7ea;
-        border-radius: 14px;
-        padding: 18px;
-        margin-bottom: 1.8rem;
-      }
-
-      .project h3 {
-        margin-top: 0;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-      p {
-        text-align: left;
-      }
-      @media (min-width: 800px) {
-        p {
-          text-align: justify;
-        }
-      }
-
-      .hero {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-bottom: 2rem;
-      }
-
-      .avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 1px solid #e5e5e5;
-      }
-
-      .links {
-        margin-top: 0.4rem;
-      }
-
-      .links a {
-        display: inline-block;
-        margin-right: 12px;
-        padding: 6px 10px;
-        border: 1px solid #e5e5e5;
-        border-radius: 999px;
-        font-size: 0.9rem;
-      }
-
-      .links a:hover {
-        background: #f5f5f5;
-        text-decoration: none;
-      }
-
-      .figure {
-        max-width: 100%;
-        border-radius: 12px;
-        border: 1px solid #e5e5e5;
-        margin: 12px 0;
-      }
-    </style> -->
   </head>
   <body>
     <header class="hero">
@@ -128,7 +34,7 @@
 
     <h2>About</h2>
     <p>
-      I am a Data Scientist with experience in applied ML research and in
+      I am a Data Scientist with experience in applied ML research, and in
       building and deploying ML pipelines. I thoroughly enjoy turning messy data
       into reliable systems that drive value.
     </p>
@@ -159,113 +65,87 @@
       <li>Experience deploying ML solutions into useful applications</li>
     </ul>
 
-    <!-- <div class="project">
-      <h3>Construction Open Data Project</h3>
-      <p>
-        This is a project to predict house prices in different parts of the UK
-        using diverse interpretable features e.g., construction, geographical
-        land use, unemployment, population, interest rates, etc. The UK regions
-        where house prices were analysed include North East, North West,
-        Yorkshire & the Humber, East Midlands, West Midlands, East, London,
-        South East and South West.
-      </p>
-      <p>
-        The various factors which affect house prices were investigated by
-        analysis of the dataset and the machine learning model, which learns the
-        underlying patterns between the different factors and the house price.
-        The degree of influence of respective features on house price
-      </p>
-      <p>
-        I collaborated with a few team mates to work on this exploratory
-        project. I was involved in the project end to end, from data sourcing,
-        pre-processing, feature engineering, modelling and deployment. A
-        streamlit app was created to package the solution for deployment.
-      </p>
-      <em
-        >Skills & Tools: Exploratory Data Analysis, Geospatial Data Exploration,
-        Data Wrangling, Data Engineering, Hypothesis Testing, Feature
-        Engineering, Machine Learning Model Development, Evaluation &
-        Deployment; Pandas, GeoPandas, xarray, Rasterio, streamlit, MlFlow </em
-      ><br />
-      <a href="https://github.com/SaamuOmole/construction_open_data_project"
-        >Code</a
-      >
-    </div>
-
-    <div class="project">
-      <h3>Time Series Foundation Model</strong></h3>
-      <p>
-        With the prevalence of foundation models in Generative AI, time series analysis is an area
-        which is now also experiencing an uptake in the application of foundation models.
-        This project focus is on time series that is very irregular, unlike those characterised
-        by the usual systematic patterns of seasonality, observable trend or a fixed-period cycle.
-      </p>
-      <em>Tools & Skills: </em><br />
-      <a href="">Code</a>
-    </div>
-
-    <div class="project">
-      <h3>Finetuning Foundation Models for Geospatial Tasks</h3>
-      Finetuned the IBM
-      <a href="https://github.com/IBM/terramind">TerraMind</a> model for various
-      tasks including segmentation, classification and change detection. Used
-      <a href="https://github.com/terrastackai/terratorch">Terratorch</a>, a flexible framework xxx <br />
-      <em>Tools & Skills: TerraTorch, PyTorch </em><br />
-      <a href="https://github.com/SaamuOmole/geofm">Code</a>
-    </div> -->
-
     <h2>Selected Projects</h2>
 
-    <div class="grid">
-      <a class="card" href="projects/un-datathon.html">
-        <h3>UN Datathon</h3>
+    <div class="project-list">
+      <a class="tile overlay" href="projects/un-datathon.html">
+        <img
+          src="assets/images/projects/un-datathon.jpg"
+          alt="UN Datathon project"
+          loading="lazy"
+        />
+        <div class="overlay-text">
+          <h3>UN Datathon (RISING)</h3>
+          <p>
+            Geospatial analysis & machine learning for Sustainable Development
+            Goals (SDGs) investment decisions
+          </p>
+        </div>
       </a>
-      <p>
-        Geospatial + ML solution to support SDG investment decisions using Kenya
-        GDP by county.
-      </p>
 
       <p>
-        <em
-          >Skills & Tools: Geospatial Data Analysis, Data Wrangling, Feature
-          Engineering, Model Development, Evaluation, Explainability and
-          Deployment; GeoPandas, GDAL, QGIS, Dask, streamlit, Folium,
-          scikit-learn, Pandas, plotly, Seaborn
-        </em>
+        <strong>Skills & Tools</strong>: Geospatial Data Analysis, Data
+        Wrangling, Feature Engineering, Model Development, Evaluation,
+        Explainability and Deployment; GeoPandas, GDAL, QGIS, Dask, streamlit,
+        Folium, scikit-learn, Pandas, plotly, Seaborn
       </p>
 
-      <a class="card" href="projects/construction-open-data.html">
-        <h3>Construction Open Data Project</h3>
+      <a class="tile overlay" href="projects/construction-open-data.html">
+        <img
+          src="assets/images/projects/construction_open_data_img.avif"
+          alt="Construction Open Data project"
+          loading="lazy"
+        />
+        <div class="overlay-text">
+          <h3>Construction Open Data Project</h3>
+          <p>
+            Interpretable house price prediction across UK regions using diverse
+            socio-economic features.
+          </p>
+        </div>
       </a>
+
       <p>
-        Interpretable house price prediction across UK regions using diverse
-        socio-economic features.
-      </p>
-      <p>
-        <em>
-          Skills & Tools: Exploratory Data Analysis, Geospatial Data
-          Exploration, Data Wrangling, Data Engineering, Hypothesis Testing,
-          Feature Engineering, Machine Learning Model Development, Evaluation &
-          Deployment; Pandas, GeoPandas, xarray, Rasterio, streamlit, MlFlow
-        </em>
+        <strong>Skills & Tools</strong>: Exploratory Data Analysis, Geospatial
+        Analysis, Data Wrangling, Data Engineering, Hypothesis Testing, Feature
+        Engineering, Machine Learning Model Development, Evaluation &
+        Deployment; Pandas, GeoPandas, xarray, Rasterio, streamlit, MlFlow
       </p>
 
-      <a class="card" href="projects/time-series-foundation-model.html">
-        <h3>Time Series Foundation Model</h3>
+      <a class="tile overlay" href="projects/time-series-foundation-model.html">
+        <img
+          src="assets/images/projects/time_series_foundation_model.avif"
+          alt="Time Series Foundation Model"
+          loading="lazy"
+        />
+        <div class="overlay-text">
+          <h3>Time Series Foundation Models</h3>
+          <p>
+            Exploring foundation models for highly irregular time series
+            modeling/forecasting.
+          </p>
+        </div>
       </a>
-      <p>
-        Exploring foundation models for highly irregular time series
-        modeling/forecasting.
-      </p>
 
-      <a class="card" href="projects/geospatial-fm-finetuning.html">
-        <h3>Finetuning Geospatial Foundation Models</h3>
+      <p><strong>Skills & Tools</strong>: TerraTorch, PyTorch</p>
+
+      <a class="tile overlay" href="projects/geospatial-fm-finetuning.html">
+        <img
+          src="assets/images/projects/geospatial_foundation_model.jpeg"
+          alt="Geospatial Foundation Model"
+          loading="lazy"
+        />
+        <div class="overlay-text">
+          <h3>Remote Sensing Geospatial Foundation Models</h3>
+          <p>
+            Finetuned geospatial foundation models for segmentation,
+            classification and change detection tasks for remote sensing
+            applications.
+          </p>
+        </div>
       </a>
-      <p>
-        Finetuned IBM TerraMind foundation model for
-        segmentation/classification/change detection tasks for remnote sensing
-        applications.
-      </p>
+
+      <p><strong>Skills & Tools</strong>: TerraTorch, PyTorch</p>
     </div>
 
     <h2>Contact</h2>
