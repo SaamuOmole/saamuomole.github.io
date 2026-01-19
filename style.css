@@ -1,10 +1,53 @@
+:root {
+  --text: #111827;
+  --muted: #4b5563;
+
+  /* --bg: #ffffff; */
+  --bg: #f8fafc; /* NEW background */
+  /* --surface: #f7f7f8; */
+  --surface: #ffffff; /* cards / content */
+  --border: #e7e7ea;
+
+  --accent: #0f766e; /* teal */
+  --accent-hover: #115e59; /* darker teal */
+  --accent-soft: #ecfdfb; /* very light teal tint */
+}
+
+:root[data-theme="dark"] {
+  --text: #e5e7eb;
+  --muted: #a1a1aa;
+
+  --bg: #0b1220; /* deep navy */
+  --surface: #0f172a; /* slate */
+  --border: #243047;
+
+  --accent: #2dd4bf; /* brighter teal */
+  --accent-hover: #5eead4;
+  --accent-soft: #0b2a2a; /* subtle teal-tinted surface */
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   max-width: 72ch;
   margin: 60px auto;
   padding: 0 20px;
   line-height: 1.65;
-  color: #222;
+  /* color: #222; */
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* body {
+  background: linear-gradient(180deg, #fafaf9 0%, #f0fdfa 100%);
+} */
+
+body {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+p,
+li {
+  color: var(--muted);
 }
 
 img {
@@ -19,6 +62,14 @@ img {
   margin-bottom: 2rem;
 }
 
+/* .hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 2rem;
+} */
+
 .avatar {
   width: 170px;
   height: 170px;
@@ -28,12 +79,20 @@ img {
 }
 
 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+/* a {
   color: #0056d2;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
-}
+} */
 
 .project-list {
   margin-top: 12px;
@@ -83,13 +142,47 @@ a:hover {
   margin: 12px 0;
 }
 
-.links a {
+/* .links a {
   display: inline-block;
   margin-right: 12px;
   padding: 6px 10px;
   border: 1px solid #e5e5e5;
   border-radius: 999px;
   font-size: 0.9rem;
+} */
+
+.links a {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 7px 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.links a:hover {
+  background: color-mix(in srgb, var(--accent) 12%, white);
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 2.2rem;
+  padding-bottom: 0.35rem;
+  /* border-bottom: 1px solid var(--border); */
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 999px;
+  margin-top: 10px;
 }
 
 .project-list {
@@ -100,7 +193,7 @@ a:hover {
 }
 
 /* Whole tile is clickable */
-.tile {
+/* .tile {
   display: block;
   border: 1px solid #e7e7ea;
   border-radius: 14px;
@@ -108,6 +201,27 @@ a:hover {
   text-decoration: none;
   color: inherit;
   background: #f7f7f8;
+} */
+
+/* .tile {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.03);
+} */
+
+.tile {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
 }
 
 /* Image banner */
@@ -134,8 +248,13 @@ a:hover {
 }
 
 /* Hover effect */
-.tile:hover {
+/* .tile:hover {
   background: #f2f2f4;
+} */
+
+.tile:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
 }
 
 .tile:hover img {
@@ -166,4 +285,13 @@ a:hover {
 .overlay-text p {
   margin: 0;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.tools {
+  margin: -6px 0 10px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 10px;
+  font-size: 0.95rem;
 }
