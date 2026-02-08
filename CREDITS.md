@@ -16,6 +16,12 @@ This document lists third-party images used on this website and their respective
 
 ## <!-- **License:** Creative Commons Attribution 4.0 (CC BY 4.0) -->
 
+## Visual Similarity Search
+
+## LLM Inbox Action Copilot
+
+**URL:**
+
 ## Time Series Foundation Model Project
 
 **File:** `assets/images/projects/time_series_foundation_model.avif`  
