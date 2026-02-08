@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Inbox Action Copilot - Samuel Omole</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a href="../index.html">← Back to home</a>
+    <h1>LLM Inbox Action Copilot</h1>
+    <p>
+      <strong>Focus</strong>: Local-first email triage using large language
+      models to detect intent and extract action.
+    </p>
+    <p>
+      Built a local LLM system that analyzes my email inbox data to identify
+      which messages require action and what type of action they involve (e.g.
+      meetings, invoices, replies, or tasks).
+    </p>
+    <p>
+      The project focuses on system design, evaluation, and error analysis
+      rather just prompt engineering, and explores how architectural choices
+      affect reliability when applying LLMs to everyday workflows like email.
+      The limits of prompt-only intent classification were also investigated.
+    </p>
+    <p>
+      <strong>Ongoing extensions to the project</strong>: Retrieval-Augmented
+      Generation and agent-based workflows
+    </p>
+
+    <h2>What I did</h2>
+    <ul>
+      <li>
+        Parsed real .eml email files exported from my inbox using Thunderbird
+      </li>
+      <li>
+        Built a robust HTML-to-text cleaning pipeline and extracted only the
+        latest message in email threads
+      </li>
+      <li>
+        Designed a weak-labeling system using heuristic rules to bootstrap
+        intent and action labels
+      </li>
+      <li>
+        Created a custom Streamlit labeling UI to manually annotate a gold
+        dataset
+      </li>
+      <li>
+        Defined intent categories based on user workflow, not just email content
+      </li>
+      <li>
+        Implemented local LLM inference using Ollama with strict JSON outputs
+      </li>
+      <li>Evaluated multiple LLM architectures:</li>
+      <ul>
+        <li>Single-stage intent + action classification</li>
+        <li>Stricter prompt-based decision rules</li>
+        <li>Two-stage pipelines (action detection → intent classification)</li>
+        <li>Confidence-gated routing to balance precision and recall</li>
+      </ul>
+      <li>
+        Performed detailed error analysis using confusion matrices and
+        precision/recall metrics
+      </li>
+      <li>
+        Iterated on system design based on empirical findings rather than model
+        swapping
+      </li>
+    </ul>
+
+    <h2>Outputs</h2>
+    <ul>
+      <li>Cleaned, structured email dataset derived from real inbox data</li>
+      <li>Weakly labeled dataset used for sampling and exploration</li>
+      <li>Gold-labeled dataset created via a custom annotation interface</li>
+      <li>Local LLM pipeline for:</li>
+      <ul>
+        <li>Action detection</li>
+        <li>Intent classification</li>
+      </ul>
+      <li>Quantitative evaluation results:</li>
+      <ul>
+        <li>Action detection precision, recall, and F1</li>
+        <li>Intent accuracy and confusion matrices</li>
+      </ul>
+      <li>
+        Final confidence-aware triage system that mirrors real-world inbox
+        behavior
+      </li>
+      <li>Reproducible evaluation and experimentation framework</li>
+    </ul>
+
+    <h2>Key insights</h2>
+    <ul>
+      <li>LLMs are strong at detecting whether an email requires action</li>
+      <li>
+        Classifying what kind of action is harder due to workflow ambiguity
+      </li>
+      <li>
+        Prompt tuning alone has diminishing returns for intent classification
+      </li>
+      <li>
+        Architectural decisions matter more than switching to larger models
+      </li>
+      <li>
+        Some inbox categories (e.g. receipts vs invoices, notifications vs
+        requests) are inherently ambiguous
+      </li>
+    </ul>
+
+    <p>
+      The project is available and fully documented in this repository:
+      <a href="https://github.com/SaamuOmole/llm-inbox-action-copilot"
+        >Code (GitHub)</a
+      >
+    </p>
+  </body>
+</html>

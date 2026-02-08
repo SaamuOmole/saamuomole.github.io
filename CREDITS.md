@@ -18,9 +18,11 @@ This document lists third-party images used on this website and their respective
 
 ## Visual Similarity Search
 
+**URL:**
+
 ## LLM Inbox Action Copilot
 
-**URL:**
+**URL:** https://unsplash.com/@hostreviews (check properly)
 
 ## Time Series Foundation Model Project
 
