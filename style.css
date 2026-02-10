@@ -328,3 +328,72 @@ h2::after {
   /* font-size: 0.95rem; */
   font-size: 0.8rem;
 }
+
+.metrics-table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.metrics-table thead th {
+  background: #f6f8fa;
+  font-weight: 600;
+  padding: 0.75rem 0.6rem;
+  border-bottom: 2px solid #e1e4e8;
+  text-align: center;
+}
+
+.metrics-table tbody td {
+  padding: 0.65rem 0.6rem;
+  border-bottom: 1px solid #eaecef;
+  text-align: center;
+}
+
+.metrics-table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.metrics-table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.metrics-table td:first-child,
+.metrics-table th:first-child {
+  font-weight: 600;
+  text-align: left;
+}
+
+.metrics-table td:last-child,
+.metrics-table th:last-child {
+  text-align: left;
+}
+
+.metrics-table td:not(:first-child):not(:last-child) {
+  font-variant-numeric: tabular-nums;
+}
+
+.metrics-table tr.best {
+  background: #eef6ff;
+}
+
+.metrics-table tr.best td:first-child {
+  border-left: 4px solid #2563eb;
+}
+
+.table-caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.4rem;
+}
+
+.figure-caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.4rem;
+}

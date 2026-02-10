@@ -21,7 +21,7 @@
     <p>
       The project focuses on system design, evaluation, and error analysis
       rather just prompt engineering, and explores how architectural choices
-      affect reliability when applying LLMs to everyday workflows like email.
+      affect reliability when applying LLMs to everyday workflows like emails.
       The limits of prompt-only intent classification were also investigated.
     </p>
     <p>
@@ -90,6 +90,90 @@
       </li>
       <li>Reproducible evaluation and experimentation framework</li>
     </ul>
+
+    <p>
+      <img
+        class="figure"
+        src="../assets/images/intent_confusion_matrix_v4.png"
+        alt="Intent Confusion Matrix"
+        loading="lazy"
+        style="width: 70%; display: block; margin: 0 auto"
+      />
+    </p>
+    <p class="figure-caption">Confusion matrix of predicted LLM intents</p>
+
+    <br />
+
+    <p class="table-caption">
+      Performance comparison across four LLM inbox triage architectures
+    </p>
+
+    <table class="metrics-table">
+      <colgroup>
+        <col style="width: 5%" />
+        <col style="width: 19%" />
+        <col style="width: 11%" />
+        <col style="width: 9%" />
+        <col style="width: 6%" />
+        <col style="width: 10%" />
+        <col style="width: 10%" />
+        <col style="width: 25%" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th style="text-align: right">Version</th>
+          <th>Architecture</th>
+          <th>Action Precision</th>
+          <th>Action Recall</th>
+          <th>Action F1</th>
+          <th>Action Accuracy</th>
+          <th>Intent Accuracy</th>
+          <th>Key Trade-off</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">v1</td>
+          <td>Single-stage classification</td>
+          <td>0.66</td>
+          <td>0.89</td>
+          <td>0.76</td>
+          <td>0.77</td>
+          <td>0.40</td>
+          <td>High recall, weak intent separation</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">v2</td>
+          <td>Stricter prompt rules</td>
+          <td>0.82</td>
+          <td>0.39</td>
+          <td>0.53</td>
+          <td>0.72</td>
+          <td>0.48</td>
+          <td>Conservative action detection</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">v3</td>
+          <td>Two-stage pipeline</td>
+          <td>0.44</td>
+          <td>0.98</td>
+          <td>0.61</td>
+          <td>0.48</td>
+          <td>0.28</td>
+          <td>Over-triggers actions</td>
+        </tr>
+        <tr class="best">
+          <td style="text-align: right">v4</td>
+          <td>Confidence-gated routing</td>
+          <td>0.65</td>
+          <td>0.61</td>
+          <td>0.63</td>
+          <td>0.71</td>
+          <td>0.37</td>
+          <td>Balanced precision and recall</td>
+        </tr>
+      </tbody>
+    </table>
 
     <h2>Key insights</h2>
     <ul>
