@@ -6,8 +6,8 @@
   --font-heading: "Space Grotesk", "Inter", system-ui, -apple-system, Segoe UI,
     Roboto, Arial, sans-serif; */
 
-  --font-body: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
+  --font-body:
+    "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-heading: "Space Grotesk", "Manrope", system-ui, sans-serif;
 
   --text: #111827;
@@ -329,57 +329,73 @@ h2::after {
   font-size: 0.8rem;
 }
 
-.metrics-table {
+/* .metrics-table {
+  margin-top: 20px;
+  overflow-x: auto;
+} */
+
+/* .metrics-table table {
   width: 100%;
-  max-width: 1100px;
-  margin: 1.5rem auto;
   border-collapse: collapse;
   font-size: 0.95rem;
+} */
+
+.metrics-table {
+  margin-top: 20px;
+  max-width: 56ch; /* narrower than body */
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+
+.metrics-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+.metrics-table thead {
+  background: #e5e7eb;
 }
 
 .metrics-table thead th {
-  background: #f6f8fa;
-  font-weight: 600;
-  padding: 0.75rem 0.6rem;
-  border-bottom: 2px solid #e1e4e8;
-  text-align: center;
+  padding: 18px 16px;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
 }
 
+/* Body cells */
 .metrics-table tbody td {
-  padding: 0.65rem 0.6rem;
-  border-bottom: 1px solid #eaecef;
-  text-align: center;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border);
 }
 
-.metrics-table tbody tr:nth-child(even) {
-  background: #fafbfc;
+/* Zebra striping */
+.metrics-table tbody tr:nth-child(odd) {
+  background: #f9fafb;
 }
 
+/* Hover (very subtle) */
 .metrics-table tbody tr:hover {
-  background: #f1f5f9;
+  background: #f3f4f6;
 }
 
-.metrics-table td:first-child,
-.metrics-table th:first-child {
-  font-weight: 600;
-  text-align: left;
+/* Optional: highlight selected/best row */
+.metrics-table tbody tr.best {
+  /* background: #eef6ff; */
+  background: inherit;
 }
 
-.metrics-table td:last-child,
-.metrics-table th:last-child {
-  text-align: left;
-}
-
-.metrics-table td:not(:first-child):not(:last-child) {
-  font-variant-numeric: tabular-nums;
-}
-
-.metrics-table tr.best {
-  background: #eef6ff;
-}
-
-.metrics-table tr.best td:first-child {
+.metrics-table tbody tr.best td:first-child {
   border-left: 4px solid #2563eb;
+}
+
+/* Align numeric columns */
+.metrics-table td:nth-child(n + 3) {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 .table-caption {

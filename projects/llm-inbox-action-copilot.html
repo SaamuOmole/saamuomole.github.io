@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,33 +10,31 @@
     <a href="../index.html">← Back to home</a>
     <h1>LLM Inbox Action Copilot</h1>
     <p>
-      <strong>Focus</strong>: Local-first email triage using large language
-      models to detect intent and extract action.
-    </p>
-    <p>
-      Built a local LLM system that analyzes my email inbox data to identify
-      which messages require action and what type of action they involve (e.g.
-      meetings, invoices, replies, or tasks).
-    </p>
-    <p>
-      The project focuses on system design, evaluation, and error analysis
-      rather just prompt engineering, and explores how architectural choices
-      affect reliability when applying LLMs to everyday workflows like emails.
-      The limits of prompt-only intent classification were also investigated.
-    </p>
-    <p>
-      <strong>Ongoing extensions to the project</strong>: Retrieval-Augmented
-      Generation and agent-based workflows
+      <strong>Focus</strong>: Local-first email triage using LLM pipelines,
+      retrieval, and supervised ML to detect intent and required action.
     </p>
 
-    <h2>What I did</h2>
+    <p>
+      Built an end-to-end email triage system that analyzes real inbox data to
+      determine whether a message requires action and classify the type of
+      action (meetings, invoices, replies, tasks, etc.).
+    </p>
+    <p>
+      The project goes beyond prompt engineering to explore how system
+      architecture, retrieval, and supervised learning affect reliability. It
+      demonstrates the limits of prompt-only LLM classification and shows when
+      lightweight supervised models outperform larger generative models for
+      structured tasks.
+    </p>
+
+    <h2>What I Did</h2>
     <ul>
       <li>
         Parsed real .eml email files exported from my inbox using Thunderbird
       </li>
+
       <li>
-        Built a robust HTML-to-text cleaning pipeline and extracted only the
-        latest message in email threads
+        Built a robust HTML-to-text cleaning pipeline with reply stripping
       </li>
       <li>
         Designed a weak-labeling system using heuristic rules to bootstrap
@@ -44,152 +42,124 @@
       </li>
       <li>
         Created a custom Streamlit labeling UI to manually annotate a gold
-        dataset
+        dataset, representing the ground truth to evaluate against
       </li>
       <li>
         Defined intent categories based on user workflow, not just email content
       </li>
+
+      <h3>LLM & Architecture Exploration (v1-v6)</h3>
       <li>
         Implemented local LLM inference using Ollama with strict JSON outputs
       </li>
-      <li>Evaluated multiple LLM architectures:</li>
+      <li>Benchmarked against OpenAI API models</li>
+      <li>Evaluated multiple LLM architectures including:</li>
       <ul>
-        <li>Single-stage intent + action classification</li>
+        <li>Single-stage classification</li>
         <li>Stricter prompt-based decision rules</li>
         <li>Two-stage pipelines (action detection → intent classification)</li>
         <li>Confidence-gated routing to balance precision and recall</li>
+        <li>
+          Retrieval-Augmented variants (RAG over historical emails and labelled
+          examples)
+        </li>
       </ul>
       <li>
-        Performed detailed error analysis using confusion matrices and
+        Conducted structured error analysis using confusion matrices and
         precision/recall metrics
       </li>
+      <h3>Supervised Baseline (v7 - Final Model)</h3>
+      <li>Generated semantic embeddings using sentence-transformers</li>
+      <li>Trained logistic regression classifiers</li>
       <li>
-        Iterated on system design based on empirical findings rather than model
-        swapping
+        Applied 5-fold out-of-fold cross-validation to prevent data leakage
       </li>
+      <li>Compared supervised results directly against LLM pipelines</li>
     </ul>
 
-    <h2>Outputs</h2>
-    <ul>
-      <li>Cleaned, structured email dataset derived from real inbox data</li>
-      <li>Weakly labeled dataset used for sampling and exploration</li>
-      <li>Gold-labeled dataset created via a custom annotation interface</li>
-      <li>Local LLM pipeline for:</li>
-      <ul>
-        <li>Action detection</li>
-        <li>Intent classification</li>
-      </ul>
-      <li>Quantitative evaluation results:</li>
-      <ul>
-        <li>Action detection precision, recall, and F1</li>
-        <li>Intent accuracy and confusion matrices</li>
-      </ul>
-      <li>
-        Final confidence-aware triage system that mirrors real-world inbox
-        behavior
-      </li>
-      <li>Reproducible evaluation and experimentation framework</li>
-    </ul>
+    <h2>Model Performance (v7: Embedding + Logistic Regression)</h2>
 
     <p>
       <img
         class="figure"
-        src="../assets/images/intent_confusion_matrix_v4.png"
+        src="../assets/images/intent_confusion_matrix_v7.png"
         alt="Intent Confusion Matrix"
         loading="lazy"
         style="width: 70%; display: block; margin: 0 auto"
       />
     </p>
-    <p class="figure-caption">Confusion matrix of predicted LLM intents</p>
+    <p class="figure-caption">Confusion matrix of predicted LLM intents - v7</p>
 
     <br />
 
-    <p class="table-caption">
-      Performance comparison across four LLM inbox triage architectures
-    </p>
+    <p class="table-caption">Performance comparison for final model - v7</p>
 
-    <table class="metrics-table">
-      <colgroup>
-        <col style="width: 5%" />
-        <col style="width: 19%" />
-        <col style="width: 11%" />
-        <col style="width: 9%" />
-        <col style="width: 6%" />
-        <col style="width: 10%" />
-        <col style="width: 10%" />
-        <col style="width: 25%" />
-      </colgroup>
-      <thead>
-        <tr>
-          <th style="text-align: right">Version</th>
-          <th>Architecture</th>
-          <th>Action Precision</th>
-          <th>Action Recall</th>
-          <th>Action F1</th>
-          <th>Action Accuracy</th>
-          <th>Intent Accuracy</th>
-          <th>Key Trade-off</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: right">v1</td>
-          <td>Single-stage classification</td>
-          <td>0.66</td>
-          <td>0.89</td>
-          <td>0.76</td>
-          <td>0.77</td>
-          <td>0.40</td>
-          <td>High recall, weak intent separation</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">v2</td>
-          <td>Stricter prompt rules</td>
-          <td>0.82</td>
-          <td>0.39</td>
-          <td>0.53</td>
-          <td>0.72</td>
-          <td>0.48</td>
-          <td>Conservative action detection</td>
-        </tr>
-        <tr>
-          <td style="text-align: right">v3</td>
-          <td>Two-stage pipeline</td>
-          <td>0.44</td>
-          <td>0.98</td>
-          <td>0.61</td>
-          <td>0.48</td>
-          <td>0.28</td>
-          <td>Over-triggers actions</td>
-        </tr>
-        <tr class="best">
-          <td style="text-align: right">v4</td>
-          <td>Confidence-gated routing</td>
-          <td>0.65</td>
-          <td>0.61</td>
-          <td>0.63</td>
-          <td>0.71</td>
-          <td>0.37</td>
-          <td>Balanced precision and recall</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="metrics-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>v7 (Embedding + LR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Intent Accuracy</td>
+            <td>0.665</td>
+          </tr>
+          <tr>
+            <td>Action Accuracy</td>
+            <td>0.790</td>
+          </tr>
+          <tr>
+            <td>Action Precision</td>
+            <td>0.704</td>
+          </tr>
+          <tr class="best">
+            <td>Action Recall</td>
+            <td>0.841</td>
+          </tr>
+          <tr>
+            <td>Action F1</td>
+            <td>0.767</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <h2>Key insights</h2>
+    <h2>Outputs</h2>
     <ul>
-      <li>LLMs are strong at detecting whether an email requires action</li>
+      <li>Cleaned, structured dataset derived from real inbox emails</li>
+      <li>Weakly labelled dataset used for sampling and exploration</li>
       <li>
-        Classifying what kind of action is harder due to workflow ambiguity
+        Gold-labelled dataset created via a custom Streamlit annotation
+        interface
+      </li>
+      <li>LLM triage pipeline (multiple architectural variants)</li>
+      <li>RAG inference framework</li>
+      <li>Supervised embedding-based classifier (best-performing model)</li>
+      <li>
+        Reproducible evaluation and experimentation framework with quantitative
+        benchmarking
+      </li>
+    </ul>
+
+    <h2>Key Findings</h2>
+    <ul>
+      <li>
+        Action detection is easier than fine-grained intent classification
+        (classifying intent is harder due to workflow ambiguity)
       </li>
       <li>
         Prompt tuning alone has diminishing returns for intent classification
       </li>
       <li>
-        Architectural decisions matter more than switching to larger models
+        Architectural design matters more than model size once baseline
+        competence is achieved
       </li>
       <li>
-        Some inbox categories (e.g. receipts vs invoices, notifications vs
-        requests) are inherently ambiguous
+        For structured multi-class classification, a supervised embedding-based
+        model significantly outperformed prompt-engineered LLM pipelines
       </li>
     </ul>
 
